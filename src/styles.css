@@ -1,1 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    --bg-card: #2d2c30ff;
+    --bg-card-hover: #3a3940ff;
+    --border-soft: #44434bff;
+
+    --text-main: #e5e7eb;
+    --text-muted: #9ca3af;
+
+    --accent: #6179ffff;
+    --accent-hover: #4e61ccff;
+}
+
+body {
+	/* Fondo de cuadrícula: líneas horizontales y verticales */
+	background-color: #2d2c30ff;
+	background-image:
+		linear-gradient(to right, #323135ff 2px, transparent 1px),
+		linear-gradient(to bottom,  #323135ff 2px, transparent 1px);
+	background-size: 50px 50px;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}

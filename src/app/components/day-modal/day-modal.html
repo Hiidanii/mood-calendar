@@ -1,0 +1,26 @@
+<div class="modal-backdrop">
+    <div class="modal">
+        <h3>{{ date }}</h3>
+
+        <div class="mood-selector">
+        <span *ngFor="let mood of moods"
+                (click)="selectedMood = mood"
+                [class.selected]="selectedMood === mood">
+            {{ mood }}
+        </span>
+        </div>
+
+        <div class="tag-selector">
+        <span *ngFor="let tag of availableTags"
+                (click)="toggleTag(tag)"
+                [class.selected]="selectedTags.includes(tag)">
+            {{ tag }}
+        </span>
+        </div>
+
+        <div class="modal-buttons">
+        <button (click)="save()">Guardar</button>
+        <button (click)="cancel()">Cancelar</button>
+        </div>
+    </div>
+</div>

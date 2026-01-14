@@ -1,0 +1,24 @@
+<div class="calendar-container">
+    <div class="calendar-header">
+        <button (click)="previousMonth()">&#8592;</button>
+        <h2>{{ currentMonth + 1 }}/{{ currentYear }}</h2>
+        <button (click)="nextMonth()">&#8594;</button>
+    </div>
+
+    <div class="calendar-grid">
+        <div class="day" 
+            *ngFor="let day of daysInMonth" 
+            (click)="openModal(day)"
+            [style.background]="getMoodColor(day)">
+            {{ day }}
+        </div>
+    </div>
+
+
+    <app-day-modal *ngIf="modalOpen"
+                [date]="selectedDate"
+                (closeModal)="closeModal()">
+    </app-day-modal>
+
+    <app-dashboard [month]="currentMonth" [year]="currentYear"></app-dashboard>
+</div>

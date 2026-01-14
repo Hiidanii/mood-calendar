@@ -1,59 +1,151 @@
-# MoodCalendar
+# 🧠 Mood Calendar
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.2.
+Aplicación web para registrar y visualizar el **estado de ánimo diario** a lo largo del año, organizada por meses, usando **solo frontend** y **localStorage**.
 
-## Development server
+---
 
-To start a local development server, run:
+## 🎯 Idea principal
 
-```bash
-ng serve
+La app permite guardar, para **cada día del año**:
+
+* Un **mood** (estado de ánimo)
+* Una lista de **tags** representados únicamente con **emojis**
+
+El objetivo es ofrecer una forma **visual, simple y rápida** de llevar un seguimiento emocional y detectar patrones con el paso del tiempo.
+
+---
+
+## 📅 Funcionamiento general
+
+* La app muestra un **calendario mensual** del mes actual.
+* El usuario puede navegar entre **todos los meses del año**.
+* Cada día puede tener:
+
+  * 1 mood
+  * 0 o más tags
+
+### Reglas importantes
+
+* ❌ **No se pueden modificar días futuros**
+* ✅ **Sí se pueden modificar días pasados**
+* Cada día solo puede tener **un mood**
+
+---
+
+## 😀 Moods
+
+Escala emocional fija (de mayor a menor):
+
+1. 😄 **Muy feliz**
+2. 🙂 **Feliz**
+3. 😌 **Tranquilo**
+4. 😐 **Neutral**
+5. 😣 **Estresado**
+6. 😢 **Triste**
+
+### Propiedades de cada mood
+
+Cada mood tiene asociado:
+
+* Un **emoji**
+* Un **color** (usado en calendario y gráficas)
+* Un **valor numérico** interno (para estadísticas)
+
+Ejemplo conceptual:
+
+* Muy feliz → 😄 → Verde
+* Feliz → 🙂 → Verde claro
+* Tranquilo → 😌 → Azul
+* Neutral → 😐 → Gris
+* Estresado → 😣 → Naranja
+* Triste → 😢 → Rojo
+
+---
+
+## 🏷️ Tags
+
+* Los tags sirven para **contextualizar el día**.
+* Se representan **solo con emojis** (sin texto).
+* Son reutilizables.
+
+Ejemplos de tags:
+
+* 🏋️‍♂️ (gym)
+* 📚 (estudiar)
+* 👥 (amigos)
+* 🎮 (videojuegos)
+* 😴 (poco sueño)
+* ☀️ / 🌧️ (clima)
+
+> Recomendación: máximo **3–5 tags por día**.
+
+---
+
+## 💾 Almacenamiento
+
+* Todos los datos se guardan en **localStorage**.
+* ❌ No hay backend
+* ❌ No hay base de datos
+* ❌ No hay inicio de sesión
+
+Esto simplifica el desarrollo y hace que la app sea:
+
+* Rápida
+* Offline
+* Ideal como proyecto personal o académico
+
+---
+
+## 🧱 Estructura de datos (conceptual)
+
+```ts
+interface MoodEntry {
+  date: string;        // YYYY-MM-DD
+  mood: MoodType;     // mood seleccionado
+  tags: string[];     // emojis
+}
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Los datos se agrupan por meses dentro de `localStorage`.
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 📊 Estadísticas y gráficas
 
-```bash
-ng generate component component-name
-```
+La app usa **Chart.js** para mostrar estadísticas basadas en los datos guardados:
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+* 📈 Evolución del mood a lo largo del mes
+* 🍩 Distribución de moods por mes
+* 📊 Frecuencia de tags
+* 📅 Mood medio mensual
 
-```bash
-ng generate --help
-```
+Las gráficas se generan **exclusivamente a partir de datos de localStorage**.
 
-## Building
+---
 
-To build the project run:
+## 🖥️ Pantallas principales
 
-```bash
-ng build
-```
+* 📅 Calendario mensual
+* 🎭 Selector de mood
+* 🏷️ Selector de tags (emojis)
+* 📊 Dashboard de estadísticas
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+---
 
-## Running unit tests
+## 🛠️ Tecnologías
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+* **Framework:** Angular 21
+* **Lenguaje:** TypeScript
+* **Vistas:** HTML + CSS
+* **Gráficas:** Chart.js
+* **Almacenamiento:** localStorage
 
-```bash
-ng test
-```
+---
 
-## Running end-to-end tests
+## 🧩 Arquitectura
 
-For end-to-end (e2e) testing, run:
+* Aplicación **solo frontend**
+* Lógica centralizada en **servicios Angular**
+* Componentes desacoplados del sistema de almacenamiento
 
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Esto permite que, en el futuro, se pueda añadir un backend sin reescribir toda la app.
