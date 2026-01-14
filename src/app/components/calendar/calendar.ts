@@ -81,6 +81,11 @@ export class Calendar implements OnInit {
     const dateStr = `${this.currentYear}-${monthStr}-${dayStr}`;
     
     const entry: MoodEntry | null = this.moodService.getMood(dateStr);
-    return entry ? this.moodColors[entry.mood] : '#edc7a9'; // Color por defecto
+    return entry ? this.moodColors[entry.mood] : '#323135ff';
+  }
+
+  getMonthName(month: number): string {
+    const date = new Date(this.currentYear, month, 1);
+    return date.toLocaleString('default', { month: 'long' });
   }
 }

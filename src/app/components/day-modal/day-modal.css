@@ -14,7 +14,7 @@
   background: var(--bg-card);
   padding: 24px;
   border-radius: 18px;
-  width: 320px;
+  width: 420px;
 
   border: 1px solid var(--border-soft);
   box-shadow: 0 20px 40px rgba(0,0,0,0.5);
@@ -38,7 +38,7 @@
   display: inline-block;
 
   background: var(--bg-card-hover);
-  border: 1px solid var(--border-soft);
+  border: 2px solid var(--border-soft);
 
   transition: all 0.2s ease;
 }

@@ -22,10 +22,13 @@ export class Dashboard implements OnInit, OnChanges {
   moodColors: string[] = ["#4CAF50","#8BC34A","#2196F3","#9E9E9E","#FF9800","#F44336"];
   chartData: any;
   chartType: ChartType = 'doughnut';
-  chartOptions = { responsive: true };
+  chartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+  };
 
   // Tags
-  availableTags: string[] = ["🏋️‍♂️","📚","👥","🎮","😴","☀️","🌧️"];
+  availableTags: string[] = ["🏋️‍♂️","📚","👥","🎮","🛌🏼","☀️","🌧️"];
   tagCounts: number[] = [];
   tagChartData: any;
   tagChartType: ChartType = 'bar';
@@ -75,7 +78,7 @@ export class Dashboard implements OnInit, OnChanges {
       }
     });
     this.moodCounts = counts;
-    this.chartData = { labels: this.moodLabels, datasets: [{ data: this.moodCounts, backgroundColor: this.moodColors }] };
+    this.chartData = { labels: this.moodLabels, datasets: [{ data: this.moodCounts, backgroundColor: this.moodColors, borderWidth: 0 }] };
   }
 
   // Calcula frecuencia de tags
@@ -87,8 +90,16 @@ export class Dashboard implements OnInit, OnChanges {
         if (index > -1) this.tagCounts[index]++;
       });
     });
-    this.tagChartData = { labels: this.availableTags, datasets: [{ data: this.tagCounts, label: 'Frecuencia de Tags', backgroundColor: '#f19953' }] };
+    this.tagChartData = { labels: this.availableTags, datasets: [{ data: this.tagCounts, label: 'Tags', backgroundColor: '#6179ffff' }] };
   }
+
+  public tagChartOptions = {
+    responsive: true,
+    scales: { y: { grid: { color: '#2d2c30ff', lineWidth: 2 } },
+                x: { grid: {color: '#2d2c30ff', lineWidth: 2} }
+    },
+    maintainAspectRatio: false,
+  };
 
   // Calcula mood medio mensual
   calculateAverageMood(moods: MoodEntry[]) {

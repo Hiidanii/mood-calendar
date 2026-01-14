@@ -17,7 +17,7 @@ export class DayModal {
   selectedMood: MoodType | null = null;
   selectedTags: string[] = [];
 
-  availableTags: string[] = ["🏋️‍♂️", "📚", "👥", "🎮", "😴", "☀️", "🌧️"];
+  availableTags: string[] = ["🏋️‍♂️", "📚", "👥", "🎮", "🛌🏼", "☀️", "🌧️"];
 
   constructor(private moodService: MoodService) {}
 
@@ -51,5 +51,15 @@ export class DayModal {
 
   cancel() {
     this.closeModal.emit();
+  }
+
+  getMonthName(dateStr: string): string {
+    const date = new Date(dateStr);
+    return date.toLocaleString('default', { month: 'long' });
+  }
+
+  getDayNumber(dateStr: string): number {
+    const date = new Date(dateStr);
+    return date.getDate();
   }
 }

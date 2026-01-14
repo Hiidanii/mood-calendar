@@ -1,6 +1,6 @@
 <div class="modal-backdrop">
     <div class="modal">
-        <h3>{{ date }}</h3>
+        <h3>{{ getDayNumber(date) }} de {{ getMonthName(date) }}</h3>
 
         <div class="mood-selector">
         <span *ngFor="let mood of moods"

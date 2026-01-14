@@ -1,7 +1,7 @@
 <div class="calendar-container">
     <div class="calendar-header">
         <button (click)="previousMonth()">&#8592;</button>
-        <h2>{{ currentMonth + 1 }}/{{ currentYear }}</h2>
+        <h2>{{ getMonthName(currentMonth) }} {{ currentYear }}</h2>
         <button (click)="nextMonth()">&#8594;</button>
     </div>
 

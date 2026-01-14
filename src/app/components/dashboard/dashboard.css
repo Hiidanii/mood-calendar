@@ -1,12 +1,12 @@
 .dashboard-container {
-  max-width: 520px;
+  max-width: 820px;
   margin: 30px auto;
-  padding: 20px;
+  padding: 20px 20px 100px;
+  overflow: hidden;
 
-  background: var(--bg-card);
+  background: var(--border-soft);
   border-radius: 16px;
-  border: 1px solid var(--border-soft);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
 
   font-family: 'Inter', sans-serif;
   color: var(--text-main);
@@ -25,6 +25,20 @@
   margin-bottom: 16px;
 }
 
-canvas {
-  margin-bottom: 24px;
+.charts {
+  display: flex;
+  gap: 20px;
+  align-items: stretch;
+}
+
+.chart-container {
+  width: 45%;
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.chart-container canvas {
+  flex: 1;
 }
