@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
 :root {
     --bg-card: #2d2c30ff;
     --bg-card-hover: #3a3940ff;
@@ -20,5 +22,5 @@ body {
 	background-size: 50px 50px;
     margin: 0;
     padding: 0;
-    font-family: 'Inter', sans-serif;
+    font-family: "Poppins", sans-serif;
 }
