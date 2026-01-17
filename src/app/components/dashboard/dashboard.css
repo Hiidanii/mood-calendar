@@ -1,13 +1,15 @@
 .dashboard-container {
+  box-sizing: border-box;
+  width: 100%;
   max-width: 820px;
   margin: 30px auto;
   padding: 20px 20px 100px;
   overflow: hidden;
 
-  background: var(--border-soft);
-  border: 2px solid var(--bg-card-hover);
+  background-color: #26262bff;
+  border: 2px solid #222227ff;
   border-radius: 16px;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
   color: var(--text-main);
   text-align: center;
@@ -29,16 +31,27 @@
   display: flex;
   gap: 20px;
   align-items: stretch;
+  flex-wrap: wrap;
 }
 
 .chart-container {
-  width: 45%;
+  width: calc(50% - 10px);
+  min-width: 280px;
   height: 320px;
   display: flex;
   flex-direction: column;
-
 }
 
 .chart-container canvas {
   flex: 1;
+}
+
+@media (max-width: 900px) {
+  .chart-container { min-width: 220px; height: 300px; }
+}
+
+@media (max-width: 720px) {
+  .charts { flex-direction: column; gap: 12px; }
+  .chart-container { width: 100%; min-width: unset; height: 320px; }
+  .chart-container:first-child { margin-bottom: 80px; }
 }

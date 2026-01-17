@@ -4,7 +4,7 @@
     <p *ngIf="averageMood > 0">Mood medio mensual: {{ averageMood }}</p>
     <p *ngIf="averageMood === 0">No hay datos para este mes</p>
 
-    <div class="charts">
+    <div *ngIf="averageMood > 0" class="charts">
         <div class="chart-container">
             <h3>Distribución de Moods</h3>
             <canvas baseChart

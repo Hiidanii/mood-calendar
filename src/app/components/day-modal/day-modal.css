@@ -14,7 +14,8 @@
   background: var(--bg-card);
   padding: 24px;
   border-radius: 18px;
-  width: 420px;
+  width: 85%;
+  max-width: 420px;
 
   border: 1px solid var(--border-soft);
   box-shadow: 0 20px 40px rgba(0,0,0,0.5);
@@ -69,6 +70,13 @@
   font-size: 0.9rem;
 
   transition: background 0.2s ease;
+}
+
+@media (max-width: 520px) {
+  .modal { padding: 16px; }
+  .mood-selector span, .tag-selector span { padding: 6px 8px; font-size: 1rem; }
+  .modal h3 { font-size: 1rem; }
+  .modal-buttons button { padding: 8px 12px; font-size: 0.9rem; }
 }
 
 .modal-buttons button:hover {
